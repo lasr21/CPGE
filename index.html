@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>¿De dónde sale y a dónde va el dinero público? — Paquete Económico 2027</title>
+<meta name="description" content="El presupuesto federal mexicano explicado en términos simples: cuánto planea recaudar el gobierno, cuánto va a pedir prestado y en qué se gasta. Comparación 2026 contra 2027.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,opsz,wdth,wght@0,12..72,62..125,100..900;1,12..72,62..125,100..900&display=swap" rel="stylesheet">
+<style>
+:root{
+  /* Tintas de billete mexicano: el verde intaglio del reverso como fondo,
+     y las denominaciones como paleta de datos. */
+  --tinta:#0D2622;
+  --tinta-2:#143229;
+  --tinta-3:#1C4035;
+  --papel:#EFEDE3;
+  --papel-2:#A9BAB0;
+  --azul:#5AA7DC;
+  --verde:#6BBF8E;
+  --morado:#B980D0;
+  --ocre:#D9A441;
+  --rojo:#E2594C;
+  --arena:#E8D5A8;
+  --teal:#4FBFB0;
+  --gris:#7E9189;
+  --linea:rgba(239,237,227,.14);
+  --max:74rem;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0;background:var(--tinta);color:var(--papel);
+  font-family:Archivo,system-ui,sans-serif;
+  font-variation-settings:'wdth' 100,'wght' 400;
+  font-size:clamp(1rem,.95rem + .25vw,1.125rem);line-height:1.6;
+  font-variant-numeric:tabular-nums;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 clamp(1.1rem,4vw,3rem)}
+.prosa{max-width:62ch}
+h1,h2,h3{font-variation-settings:'wdth' 118,'wght' 760;line-height:1.02;letter-spacing:-.022em;margin:0}
+h1{font-size:clamp(2.1rem,1.2rem + 4.2vw,4.6rem)}
+h2{font-size:clamp(1.55rem,1.1rem + 1.9vw,2.6rem)}
+h3{font-size:1.16rem;font-variation-settings:'wdth' 110,'wght' 700;letter-spacing:-.01em}
+p{margin:0 0 1rem}
+a{color:var(--papel)}
+.tenue{color:var(--papel-2)}
+.chico{font-size:.86rem;line-height:1.5}
+.num{font-variation-settings:'wdth' 122,'wght' 780;letter-spacing:-.03em}
+
+/* ---------- barra superior ---------- */
+header.top{
+  position:sticky;top:0;z-index:40;background:rgba(13,38,34,.93);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--linea);
+}
+.top .wrap{display:flex;gap:1rem;align-items:center;justify-content:space-between;
+  min-height:3.6rem;flex-wrap:wrap;padding-top:.5rem;padding-bottom:.5rem}
+.marca{font-variation-settings:'wdth' 112,'wght' 700;font-size:.95rem;letter-spacing:-.01em}
+.marca span{color:var(--papel-2);font-variation-settings:'wdth' 100,'wght' 400}
+.switch{display:flex;border:1px solid var(--linea);border-radius:2px;overflow:hidden}
+.switch button{
+  appearance:none;border:0;background:transparent;color:var(--papel-2);
+  font:inherit;font-size:.9rem;font-variation-settings:'wdth' 105,'wght' 620;
+  padding:.42rem .9rem;cursor:pointer;transition:background .15s,color .15s;
+}
+.switch button+button{border-left:1px solid var(--linea)}
+.switch button[aria-pressed=true]{background:var(--papel);color:var(--tinta)}
+.switch button:focus-visible{outline:2px solid var(--ocre);outline-offset:-2px}
+
+/* ---------- hero ---------- */
+.hero{padding:clamp(3rem,7vw,6rem) 0 clamp(2.5rem,5vw,4rem)}
+.hero .estatus{
+  display:inline-block;font-size:.8rem;color:var(--tinta);background:var(--ocre);
+  padding:.2rem .55rem;border-radius:2px;font-variation-settings:'wdth' 105,'wght' 650;margin-bottom:1.4rem;
+}
+.hero h1{margin-bottom:1.4rem;max-width:19ch}
+.hero h1 em{font-style:normal;color:var(--rojo)}
+.bajada{max-width:56ch;color:var(--papel-2);margin-bottom:2.6rem}
+
+/* la cuadrícula de 100 — el elemento memorable */
+.cien{margin:0 0 1.2rem}
+.cien-grid{
+  display:grid;grid-template-columns:repeat(10,1fr);gap:clamp(3px,.6vw,6px);
+  max-width:34rem;margin-bottom:1.1rem;
+}
+.pz{
+  aspect-ratio:1;border-radius:1px;border:0;padding:0;cursor:pointer;
+  opacity:0;transform:scale(.4);
+  animation:pop .34s cubic-bezier(.2,.9,.3,1.2) forwards;
+  transition:outline-color .12s;outline:2px solid transparent;outline-offset:2px;
+}
+.pz:hover,.pz:focus-visible{outline-color:var(--papel)}
+@keyframes pop{to{opacity:1;transform:scale(1)}}
+@media (prefers-reduced-motion:reduce){.pz{animation:none;opacity:1;transform:none}}
+.cien-leyenda{display:flex;flex-wrap:wrap;gap:.4rem 1.1rem;font-size:.84rem;color:var(--papel-2)}
+.cien-leyenda b{
+  display:inline-flex;align-items:center;gap:.4rem;font-variation-settings:'wdth' 100,'wght' 400;
+}
+.cien-leyenda i{width:.7rem;height:.7rem;border-radius:1px;display:inline-block;flex:none}
+.cien-lectura{
+  min-height:3.4rem;margin-top:1.1rem;padding-left:.9rem;border-left:2px solid var(--ocre);
+  max-width:46ch;font-size:.94rem;
+}
+.cien-lectura strong{font-variation-settings:'wdth' 112,'wght' 700}
+
+/* ---------- secciones ---------- */
+section{padding:clamp(2.8rem,6vw,5rem) 0;border-top:1px solid var(--linea)}
+.encab{margin-bottom:2.2rem}
+.encab h2{margin-bottom:.8rem}
+.encab p{color:var(--papel-2);max-width:58ch;margin:0}
+
+/* ---------- flujo / sankey ---------- */
+.controles{display:flex;flex-wrap:wrap;gap:.6rem;align-items:center;margin-bottom:1.6rem}
+.chip{
+  appearance:none;background:transparent;color:var(--papel-2);border:1px solid var(--linea);
+  border-radius:2px;font:inherit;font-size:.84rem;padding:.32rem .72rem;cursor:pointer;
+  font-variation-settings:'wdth' 102,'wght' 550;
+}
+.chip[aria-pressed=true]{background:var(--tinta-3);color:var(--papel);border-color:transparent}
+.chip:focus-visible{outline:2px solid var(--ocre);outline-offset:1px}
+.flujo-caja{position:relative;margin:0 -.4rem}
+svg.flujo{width:100%;height:auto;display:block;overflow:visible}
+svg.flujo text{font-family:Archivo,sans-serif;font-variant-numeric:tabular-nums}
+.n-nom{font-size:13px;font-variation-settings:'wdth' 108,'wght' 640;fill:var(--papel)}
+.n-val{font-size:12px;font-variation-settings:'wdth' 112,'wght' 500;fill:var(--papel-2)}
+.n-mas{font-size:11px;font-variation-settings:'wdth' 100,'wght' 600;fill:var(--ocre)}
+.cinta{transition:opacity .18s}
+.nodo{cursor:pointer}
+.nodo:focus-visible rect{stroke:var(--papel);stroke-width:2}
+.flujo-caja.enfoque .cinta:not(.on){opacity:.13}
+.flujo-caja.enfoque .nodo:not(.on){opacity:.34}
+.tip{
+  position:fixed;pointer-events:none;opacity:0;transition:opacity .12s;
+  background:var(--papel);color:var(--tinta);padding:.6rem .75rem;border-radius:3px;
+  max-width:19rem;font-size:.84rem;line-height:1.42;z-index:20;
+  box-shadow:0 10px 34px rgba(0,0,0,.45);
+}
+.tip strong{display:block;font-variation-settings:'wdth' 112,'wght' 720;font-size:.95rem;margin-bottom:.15rem}
+.tip .t-val{font-variation-settings:'wdth' 118,'wght' 700;font-size:1.05rem;display:block;margin-bottom:.35rem}
+.pie-flujo{margin-top:1.4rem;color:var(--papel-2);font-size:.85rem;max-width:64ch}
+
+/* ---------- comparación ---------- */
+.comp{display:grid;gap:.1rem}
+.fila{
+  display:grid;grid-template-columns:minmax(8rem,13rem) 1fr minmax(4.5rem,auto);
+  gap:.9rem;align-items:center;padding:.5rem 0;border-bottom:1px solid rgba(239,237,227,.07);
+}
+.fila .et{font-size:.92rem}
+.fila .et small{display:block;color:var(--papel-2);font-size:.76rem;line-height:1.3}
+.barra{position:relative;height:1.5rem}
+.barra .eje{position:absolute;left:50%;top:-.5rem;bottom:-.5rem;width:1px;background:var(--linea)}
+.barra .b{position:absolute;top:.28rem;height:.94rem;border-radius:1px;transition:width .5s cubic-bezier(.2,.7,.3,1),left .5s cubic-bezier(.2,.7,.3,1)}
+.fila .pc{text-align:right;font-variation-settings:'wdth' 115,'wght' 690;font-size:.95rem}
+.pc.up{color:var(--verde)}.pc.down{color:var(--rojo)}
+@media (prefers-reduced-motion:reduce){.barra .b{transition:none}}
+
+/* ---------- cambios de la ley ---------- */
+.cambios{display:grid;gap:0}
+.cambio{border-top:1px solid var(--linea);padding:1.5rem 0}
+.cambio:last-child{border-bottom:1px solid var(--linea)}
+.cambio h3{margin-bottom:.7rem;max-width:44ch}
+.cambio .par{display:grid;gap:1rem 2.4rem;grid-template-columns:1fr;max-width:70ch}
+@media(min-width:52rem){.cambio .par{grid-template-columns:1fr 1fr;max-width:none}}
+.cambio .par div p{margin:0;font-size:.94rem}
+.cambio .par .rot{
+  font-size:.76rem;color:var(--ocre);margin-bottom:.3rem;
+  font-variation-settings:'wdth' 104,'wght' 640;
+}
+.cambio .art{font-size:.78rem;color:var(--gris);margin-top:.9rem}
+
+/* ---------- tabla ---------- */
+.tabla-caja{overflow-x:auto;margin:0 -.4rem;padding:0 .4rem}
+table{border-collapse:collapse;width:100%;font-size:.88rem;min-width:34rem}
+th,td{text-align:right;padding:.5rem .7rem;border-bottom:1px solid rgba(239,237,227,.08);white-space:nowrap}
+th:first-child,td:first-child{text-align:left;white-space:normal}
+thead th{
+  color:var(--papel-2);font-variation-settings:'wdth' 104,'wght' 620;font-size:.8rem;
+  border-bottom:1px solid var(--linea);position:sticky;top:3.6rem;background:var(--tinta);
+}
+tbody tr.grupo td{font-variation-settings:'wdth' 108,'wght' 680;padding-top:1rem}
+tbody tr.hijo td:first-child{padding-left:1.6rem;color:var(--papel-2)}
+tbody tr.total td{border-top:1px solid var(--linea);border-bottom:0;
+  font-variation-settings:'wdth' 112,'wght' 720;padding-top:.8rem}
+
+/* ---------- pie ---------- */
+footer{border-top:1px solid var(--linea);padding:2.6rem 0 4rem;color:var(--papel-2);font-size:.87rem}
+footer a{color:var(--papel);text-decoration-color:var(--gris);text-underline-offset:.2em}
+footer .cols{display:grid;gap:1.6rem;grid-template-columns:1fr}
+@media(min-width:46rem){footer .cols{grid-template-columns:1.4fr 1fr}}
+.cargando{padding:5rem 0;color:var(--papel-2)}
+.error{border-left:2px solid var(--rojo);padding:1rem 0 1rem 1rem;max-width:52ch}
+:focus-visible{outline:2px solid var(--ocre);outline-offset:2px}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <div class="marca">El dinero público <span>· Paquete Económico de México</span></div>
+    <div class="switch" role="group" aria-label="Elegir año">
+      <button type="button" data-anio="2026" aria-pressed="false">2026</button>
+      <button type="button" data-anio="2027" aria-pressed="true">2027</button>
+    </div>
+  </div>
+</header>
+
+<main id="app"><div class="wrap cargando">Cargando los datos…</div></main>
+
+<footer>
+  <div class="wrap cols">
+    <div>
+      <p>Todas las cifras vienen de los documentos oficiales que la Secretaría de Hacienda publica cada septiembre en
+      <a href="https://www.finanzaspublicas.hacienda.gob.mx/es/Finanzas_Publicas/Paquete_Economico_y_Presupuesto" target="_blank" rel="noopener">finanzaspublicas.hacienda.gob.mx</a>.
+      Ese portal es la única fuente autorizada y sus cifras pueden cambiar: el Congreso discute el paquete hasta noviembre y puede modificarlo.</p>
+      <p>Este sitio no es oficial ni está afiliado a ninguna dependencia. Es una lectura de documentos públicos.</p>
+    </div>
+    <div>
+      <p id="pie-fuentes"></p>
+      <p><a href="./data/paquete.json">Descargar los datos en JSON</a></p>
+      <p>Hecho con amor y café por <a href="https://x.com/lasr21" target="_blank" rel="noopener">@lasr21</a>, con ayuda de Claude.</p>
+      <p class="chico">Este sitio es una guía, no una fuente oficial. Revisa siempre los datos y documentos oficiales antes de citarlos o tomar decisiones.</p>
+    </div>
+  </div>
+</footer>
+
+<div class="tip" id="tip" role="status" aria-live="polite"></div>
+
+<script>
+const TONOS={azul:'--azul',verde:'--verde',morado:'--morado',ocre:'--ocre',
+  rojo:'--rojo',arena:'--arena',teal:'--teal',gris:'--gris'};
+const css=v=>getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+const color=t=>css(TONOS[t]||'--gris');
+
+let D=null, ANIO='2027', UNIDAD='bill', ABIERTO=new Set();
+
+/* ------------------------------------------------ formato de cifras */
+const nf=(n,d=1)=>n.toLocaleString('es-MX',{minimumFractionDigits:d,maximumFractionDigits:d});
+function fmt(monto,ctx){
+  const a=D.anios[ANIO];
+  switch(UNIDAD){
+    case 'bill': {
+      const b=monto/1e6;
+      return b>=1 ? '$'+nf(b,2)+' billones'
+                  : '$'+nf(monto/1e3,1)+' mil millones';
+    }
+    case 'pib':  return nf(monto/a.macro.pib*100,1)+'% del PIB';
+    case 'cien': return '$'+nf(monto/a.totales.bolsa*100,1)+' de cada $100';
+    case 'persona': {
+      const p=monto*1e6/a.macro.poblacion;
+      return '$'+Math.round(p).toLocaleString('es-MX')+' por persona al año';
+    }
+  }
+}
+const fmtCorto=m=>{const b=m/1e6;return b>=1?'$'+nf(b,2)+' B':'$'+nf(m/1e3,0)+' MM';};
+
+/* ------------------------------------------------ arranque */
+fetch('./data/paquete.json')
+  .then(r=>{if(!r.ok)throw new Error(r.status);return r.json()})
+  .then(j=>{D=j;pintar();})
+  .catch(()=>{
+    document.getElementById('app').innerHTML=
+      '<div class="wrap"><div class="error"><h2>No se pudieron cargar los datos</h2>'+
+      '<p class="tenue">El archivo <code>data/paquete.json</code> no está disponible. '+
+      'Si abriste este archivo directamente desde tu computadora, el navegador bloquea la lectura: '+
+      'levanta un servidor local con <code>python3 -m http.server</code> y entra a '+
+      '<code>localhost:8000</code>.</p></div></div>';
+  });
+
+document.querySelectorAll('.switch button').forEach(b=>{
+  b.addEventListener('click',()=>{
+    if(b.dataset.anio===ANIO)return;
+    ANIO=b.dataset.anio; ABIERTO.clear();
+    document.querySelectorAll('.switch button').forEach(o=>
+      o.setAttribute('aria-pressed',String(o.dataset.anio===ANIO)));
+    pintar();
+    document.getElementById('app').scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* ================================================= render principal */
+function pintar(){
+  const a=D.anios[ANIO], t=a.totales;
+  const pctDeuda=t.deuda/t.bolsa*100;
+  const pctPropio=100-pctDeuda;
+
+  document.getElementById('app').innerHTML=`
+  <div class="hero"><div class="wrap">
+    <span class="estatus">${a.estatus}</span>
+    <h1>De cada $100 que el gobierno planea gastar en ${a.etiqueta},
+        <em>${Math.round(pctDeuda)} los pide prestados</em>.</h1>
+    <p class="bajada">Los otros $${Math.round(pctPropio)} salen de impuestos, cuotas del IMSS,
+      venta de electricidad y petróleo. Cada cuadrito de abajo es uno de esos cien pesos.
+      Pásale el cursor o tócalo para ver de dónde viene.</p>
+    <div class="cien">
+      <div class="cien-grid" id="grid" role="list" aria-label="Cien pesos del presupuesto, por origen"></div>
+      <div class="cien-leyenda" id="leyenda"></div>
+      <p class="cien-lectura" id="lectura"></p>
+    </div>
+  </div></div>
+
+  <section id="flujo"><div class="wrap">
+    <div class="encab">
+      <h2>El recorrido completo del dinero</h2>
+      <p>Todo lo que entra a la izquierda sale por la derecha: son los mismos
+        ${fmtCorto(t.bolsa)} vistos dos veces. Toca cualquier bloque para abrirlo.</p>
+    </div>
+    <div class="controles" id="unidades" role="group" aria-label="Cambiar unidad">
+      <span class="chico tenue" style="margin-right:.3rem">Ver como</span>
+      <button class="chip" type="button" data-u="bill">pesos</button>
+      <button class="chip" type="button" data-u="pib">% del PIB</button>
+      <button class="chip" type="button" data-u="cien">de cada $100</button>
+      <button class="chip" type="button" data-u="persona">por persona</button>
+      <button class="chip" type="button" id="cerrar-todo" style="margin-left:auto">Cerrar todo</button>
+    </div>
+    <div class="flujo-caja" id="caja"><svg class="flujo" id="svg" viewBox="0 0 1000 660"
+      role="img" aria-label="Diagrama de flujo del presupuesto federal"></svg></div>
+    <p class="pie-flujo" id="pie-flujo"></p>
+  </div></section>
+
+  <section id="comparacion"><div class="wrap">
+    <div class="encab">
+      <h2>Qué sube y qué baja para 2027</h2>
+      <p>Cambio real contra el presupuesto aprobado de 2026, es decir, ya descontada
+        la inflación. Estos porcentajes los publica Hacienda; no están calculados aquí.</p>
+    </div>
+    <div class="comp" id="comp"></div>
+    <p class="pie-flujo">Un aumento nominal no siempre es un aumento verdadero: si un rubro
+      crece 3% y los precios suben 4%, en realidad compra menos que el año pasado.</p>
+  </div></section>
+
+  <section id="ley"><div class="wrap">
+    <div class="encab">
+      <h2>Lo que propone la Ley de Ingresos</h2>
+      <p>La Ley de Ingresos es la lista de todo lo que la Federación planea cobrar,
+        incluida la deuda. Estos son los puntos que más afectan a la gente.</p>
+    </div>
+    <div class="cambios" id="cambios"></div>
+  </div></section>
+
+  <section id="datos"><div class="wrap">
+    <div class="encab">
+      <h2>Los números, sin adornos</h2>
+      <p>La misma información en tabla, por si quieres verificarla contra el documento original.</p>
+    </div>
+    <div class="tabla-caja"><table id="tabla"></table></div>
+    <p class="pie-flujo" id="pie-tabla"></p>
+  </div></section>`;
+
+  document.getElementById('pie-fuentes').textContent=
+    'Documentos usados: '+D.fuente.documentos.join('; ')+'.';
+
+  pintarCien(); pintarFlujo(); pintarComparacion(); pintarCambios(); pintarTabla();
+
+  document.querySelectorAll('#unidades .chip[data-u]').forEach(b=>{
+    b.setAttribute('aria-pressed',String(b.dataset.u===UNIDAD));
+    b.onclick=()=>{UNIDAD=b.dataset.u;
+      document.querySelectorAll('#unidades .chip[data-u]').forEach(o=>
+        o.setAttribute('aria-pressed',String(o.dataset.u===UNIDAD)));
+      pintarFlujo(); pintarTabla();};
+  });
+  document.getElementById('cerrar-todo').onclick=()=>{ABIERTO.clear();pintarFlujo();};
+}
+
+/* ================================================= la cuadrícula de 100 */
+function pintarCien(){
+  const a=D.anios[ANIO], total=a.totales.bolsa;
+  const grid=document.getElementById('grid'), leyenda=document.getElementById('leyenda');
+  // Reparto de 100 cuadritos por método de mayores residuos: la suma da 100 exacta.
+  const base=a.fuentes.map(f=>({f,exacto:f.monto/total*100}));
+  const asignado=base.map(o=>({...o,n:Math.floor(o.exacto)}));
+  let faltan=100-asignado.reduce((s,o)=>s+o.n,0);
+  asignado.map((o,i)=>({i,r:o.exacto-Math.floor(o.exacto)}))
+    .sort((x,y)=>y.r-x.r).slice(0,faltan).forEach(({i})=>asignado[i].n++);
+
+  grid.innerHTML=''; leyenda.innerHTML='';
+  let k=0;
+  asignado.forEach(({f,n,exacto})=>{
+    for(let i=0;i<n;i++){
+      const b=document.createElement('button');
+      b.type='button'; b.className='pz'; b.setAttribute('role','listitem');
+      b.style.background=color(f.tono);
+      b.style.animationDelay=(k*7)+'ms';
+      b.setAttribute('aria-label',`$${Math.round(exacto)} de cada $100: ${f.nombre}`);
+      const leer=()=>{
+        document.getElementById('lectura').innerHTML=
+          `<strong>$${nf(exacto,1)} de cada $100 — ${f.nombre}.</strong> ${f.explica}`;
+      };
+      b.addEventListener('mouseenter',leer); b.addEventListener('focus',leer);
+      b.addEventListener('click',leer);
+      grid.appendChild(b); k++;
+    }
+    const el=document.createElement('b');
+    el.innerHTML=`<i style="background:${color(f.tono)}"></i>${f.nombre} · $${Math.round(exacto)}`;
+    leyenda.appendChild(el);
+  });
+  const deuda=a.fuentes.find(f=>f.es_deuda);
+  document.getElementById('lectura').innerHTML=
+    `<strong>Los ${Math.round(deuda.monto/total*100)} cuadritos rojos son deuda.</strong> ${deuda.explica}`;
+}
+
+/* ================================================= el diagrama de flujo */
+function visibles(lista){
+  const out=[];
+  lista.forEach(n=>{
+    if(ABIERTO.has(n.id)&&n.hijos&&n.hijos.length){
+      n.hijos.forEach(h=>out.push({...h,tono:h.tono||n.tono,es_deuda:n.es_deuda,
+        padre:n.nombre,pTono:n.tono,explica:h.detalle||n.explica}));
+    } else out.push(n);
+  });
+  return out;
+}
+
+function pintarFlujo(){
+  const a=D.anios[ANIO], total=a.totales.bolsa;
+  const svg=document.getElementById('svg'); svg.innerHTML='';
+  const NS='http://www.w3.org/2000/svg';
+  const mk=(t,at={})=>{const e=document.createElementNS(NS,t);
+    for(const k in at)e.setAttribute(k,at[k]);return e;};
+
+  const izq=visibles(a.fuentes), der=visibles(a.destinos);
+  const H=660, TOP=26, ALTO=H-TOP-26;
+  const XL=232, XM=486, XR=760, W=13, WM=17;
+
+  const disponible=(lista)=>ALTO-(lista.length-1)*7;
+  const colocar=(lista,x,esc)=>{
+    let y=TOP; return lista.map(n=>{
+      const h=Math.max(2.5,Math.abs(n.monto)*esc);
+      const o={n,x,y,h}; y+=h+7; return o;});
+  };
+  const escI=disponible(izq)/izq.reduce((s,n)=>s+Math.abs(n.monto),0);
+  const escD=disponible(der)/der.reduce((s,n)=>s+Math.abs(n.monto),0);
+  const A=colocar(izq,XL,escI), B=colocar(der,XR,escD);
+
+  // la barra del centro: la bolsa completa
+  const hM=ALTO;
+  svg.appendChild(mk('rect',{x:XM,y:TOP,width:WM,height:hM,fill:css('--papel'),opacity:.9,rx:1}));
+  const et=mk('text',{x:XM+WM/2,y:TOP-9,'text-anchor':'middle',class:'n-nom'});
+  et.textContent='Toda la bolsa · '+fmtCorto(total); svg.appendChild(et);
+
+  const cinta=(x0,y0,h0,x1,y1,h1,fill,op)=>{
+    const cx=(x0+x1)/2;
+    const d=`M${x0},${y0} C${cx},${y0} ${cx},${y1} ${x1},${y1}
+             L${x1},${y1+h1} C${cx},${y1+h1} ${cx},${y0+h0} ${x0},${y0+h0} Z`;
+    return mk('path',{d,fill,opacity:op,class:'cinta'});
+  };
+
+  // izquierda -> centro
+  let yM=TOP;
+  A.forEach(o=>{
+    const c=color(o.n.tono), hM2=Math.abs(o.n.monto)/total*hM;
+    const p=cinta(o.x+W,o.y,o.h,XM,yM,hM2,c,.4); p.dataset.id=o.n.id;
+    svg.appendChild(p); yM+=hM2;
+  });
+  // centro -> derecha
+  yM=TOP;
+  B.forEach(o=>{
+    const c=color(o.n.tono), hM2=Math.abs(o.n.monto)/total*hM;
+    const p=cinta(XM+WM,yM,hM2,o.x,o.y,o.h,c,.4); p.dataset.id=o.n.id;
+    svg.appendChild(p); yM+=hM2;
+  });
+
+  const dibujarNodo=(o,lado)=>{
+    const g=mk('g',{class:'nodo',tabindex:'0',role:'button'});
+    const c=color(o.n.tono);
+    g.appendChild(mk('rect',{x:o.x,y:o.y,width:W,height:o.h,fill:c,rx:1}));
+    const tx=lado==='izq'?o.x-11:o.x+W+11, anc=lado==='izq'?'end':'start';
+    const abrible=o.n.hijos&&o.n.hijos.length;
+    const centro=o.y+o.h/2;
+    const dos=o.h>26;
+    svg.appendChild(g);
+    // Con muchos nodos abiertos las etiquetas se encimarían: por debajo de 11px
+    // la barra habla sola y el nombre vive en el tooltip.
+    if(o.h>=11){
+      const t1=mk('text',{x:tx,y:dos?centro-3:centro+4,'text-anchor':anc,class:'n-nom'});
+      t1.textContent=o.n.nombre+(abrible?(ABIERTO.has(o.n.id)?' –':' +'):'');
+      g.appendChild(t1);
+      if(dos){
+        const t2=mk('text',{x:tx,y:centro+13,'text-anchor':anc,class:'n-val'});
+        t2.textContent=fmt(o.n.monto); g.appendChild(t2);
+      }
+    }
+    g.setAttribute('aria-label',`${o.n.nombre}, ${fmt(o.n.monto)}`+
+      (abrible?'. Activar para ver el desglose':''));
+
+    const encender=()=>{
+      document.getElementById('caja').classList.add('enfoque');
+      svg.querySelectorAll('.cinta').forEach(p=>
+        p.classList.toggle('on',p.dataset.id===o.n.id));
+      g.classList.add('on');
+      const pct=Math.abs(o.n.monto)/total*100;
+      tip(`<strong>${o.n.nombre}</strong><span class="t-val">${fmt(o.n.monto)}</span>${
+        o.n.explica||o.n.detalle||''}<br><span style="opacity:.6">Es el ${nf(pct,1)}% de toda la bolsa${
+        abrible?' · toca para abrirlo':''}</span>`);
+    };
+    const apagar=()=>{
+      document.getElementById('caja').classList.remove('enfoque');
+      svg.querySelectorAll('.on').forEach(e=>e.classList.remove('on'));
+      ocultarTip();
+    };
+    g.addEventListener('mouseenter',encender);
+    g.addEventListener('mousemove',moverTip);
+    g.addEventListener('mouseleave',apagar);
+    g.addEventListener('focus',encender); g.addEventListener('blur',apagar);
+    const alternar=e=>{e.preventDefault();
+      if(!abrible){ encender(); if(e.clientX)moverTip(e); return; }
+      ABIERTO.has(o.n.id)?ABIERTO.delete(o.n.id):ABIERTO.add(o.n.id);
+      pintarFlujo();};
+    g.addEventListener('click',alternar);
+    g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' ')alternar(e);});
+  };
+  A.forEach(o=>dibujarNodo(o,'izq'));
+  B.forEach(o=>dibujarNodo(o,'der'));
+
+  const enc=[['Entra',XL-11,'end'],['Sale',XR+W+11,'start']];
+  enc.forEach(([txt,x,anc])=>{
+    const e=mk('text',{x,y:TOP-9,'text-anchor':anc,class:'n-mas'});
+    e.textContent=txt; svg.appendChild(e);
+  });
+
+  const t=a.totales;
+  document.getElementById('pie-flujo').innerHTML=
+    `La bolsa total (${fmtCorto(t.bolsa)}) es más grande que el gasto que se paga en el año
+     (${fmtCorto(t.gasto_pagado)}) porque incluye facturas de ${a.etiqueta} que se liquidan en enero siguiente.
+     Fíjate en el rojo: la deuda entra por la izquierda y los intereses salen por la derecha.
+     En ${a.etiqueta} se pagan ${fmtCorto(a.destinos.find(d=>d.id==='intereses').monto)} solo de intereses,
+     más que todo lo que se reparte a los 32 estados.`;
+}
+
+/* --------- tooltip --------- */
+const elTip=document.getElementById('tip');
+function tip(html){elTip.innerHTML=html;elTip.style.opacity='1';}
+function ocultarTip(){elTip.style.opacity='0';}
+function moverTip(e){
+  const w=elTip.offsetWidth||280, h=elTip.offsetHeight||120;
+  let x=e.clientX+18, y=e.clientY+18;
+  if(x+w>innerWidth-10)  x=e.clientX-w-18;
+  if(y+h>innerHeight-10) y=Math.max(10,e.clientY-h-18);
+  elTip.style.left=Math.max(10,x)+'px';
+  elTip.style.top=y+'px';
+}
+
+/* ================================================= comparación 2026→2027 */
+function pintarComparacion(){
+  const V=D.variaciones_reales;
+  const filas=[
+    ['ingresos','Todo lo que se recauda','impuestos, cuotas, petróleo y cobros'],
+    ['impuestos','Impuestos','ISR, IVA, IEPS, importaciones'],
+    ['petroleros','Petróleo','ventas de Pemex y derechos al Estado'],
+    ['no_tributarios','Derechos y cobros','permisos, concesiones, aprovechamientos'],
+    ['organismos','IMSS, ISSSTE y CFE','cuotas de seguridad social y electricidad'],
+    ['gasto_pagado','Todo lo que se gasta',''],
+    ['social','Desarrollo social','pensiones, salud, educación, vivienda'],
+    ['economico','Desarrollo económico','energía, campo, infraestructura'],
+    ['gobierno','Gobierno','seguridad, defensa, justicia'],
+    ['participaciones','Estados y municipios',''],
+    ['intereses','Intereses de la deuda',''],
+  ];
+  const max=Math.max(...filas.map(([k])=>Math.abs(V[k])));
+  const cont=document.getElementById('comp'); cont.innerHTML='';
+  filas.forEach(([k,nom,sub],i)=>{
+    const v=V[k], w=Math.abs(v)/max*48, pos=v>=0;
+    const d=document.createElement('div'); d.className='fila';
+    d.innerHTML=`<div class="et">${nom}${sub?`<small>${sub}</small>`:''}</div>
+      <div class="barra"><span class="eje"></span>
+        <span class="b" style="background:${pos?css('--verde'):css('--rojo')};
+          left:${pos?50:50-w}%;width:0%"></span></div>
+      <div class="pc ${pos?'up':'down'}">${pos?'+':''}${nf(v,1)}%</div>`;
+    cont.appendChild(d);
+    const barra=d.querySelector('.b');
+    requestAnimationFrame(()=>setTimeout(()=>{barra.style.width=w+'%';},i*45));
+  });
+}
+
+/* ================================================= cambios de la ley */
+function pintarCambios(){
+  document.getElementById('cambios').innerHTML=D.cambios_ley.map(c=>`
+    <article class="cambio">
+      <h3>${c.titulo}</h3>
+      <div class="par">
+        <div><p class="rot">Qué dice</p><p>${c.que_dice}</p></div>
+        <div><p class="rot">Qué significa</p><p>${c.que_significa}</p></div>
+      </div>
+      <p class="art">${c.articulo}</p>
+    </article>`).join('');
+}
+
+/* ================================================= tabla */
+function pintarTabla(){
+  const a=D.anios[ANIO], otro=D.anios[ANIO==='2027'?'2026':'2027'];
+  const buscar=(lista,id)=>{
+    for(const n of lista){ if(n.id===id)return n;
+      if(n.hijos){const r=buscar(n.hijos,id); if(r)return r;} }
+    return null;
+  };
+  const seccion=(titulo,lista)=>{
+    let h=`<tr class="grupo"><td colspan="3">${titulo}</td></tr>`;
+    lista.forEach(n=>{
+      const o=buscar(otro.fuentes.concat(otro.destinos),n.id);
+      h+=`<tr><td>${n.nombre}</td><td>${fmt(n.monto)}</td>
+          <td class="tenue">${o?fmt(o.monto):'—'}</td></tr>`;
+      (n.hijos||[]).forEach(x=>{
+        const ox=buscar(otro.fuentes.concat(otro.destinos),x.id);
+        h+=`<tr class="hijo"><td>${x.nombre}</td><td>${fmt(x.monto)}</td>
+            <td class="tenue">${ox?fmt(ox.monto):'—'}</td></tr>`;
+      });
+    });
+    return h;
+  };
+  document.getElementById('tabla').innerHTML=`
+    <thead><tr><th>Concepto</th><th>${a.etiqueta} · ${a.estatus.split(' ')[0].toLowerCase()}</th>
+    <th>${otro.etiqueta}</th></tr></thead>
+    <tbody>
+      ${seccion('De dónde sale',a.fuentes)}
+      ${seccion('A dónde va',a.destinos)}
+      <tr class="total"><td>Total</td><td>${fmt(a.totales.bolsa)}</td>
+        <td class="tenue">${fmt(otro.totales.bolsa)}</td></tr>
+    </tbody>`;
+  document.getElementById('pie-tabla').textContent=
+    'Los subtotales suman exacto a su total. Cuando el documento original publicaba el desglose '+
+    'redondeado a miles de millones, el último renglón de cada grupo absorbe la diferencia. '+
+    a.nota_estatus;
+}
+</script>
+</body>
+</html>

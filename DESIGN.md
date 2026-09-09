@@ -1,143 +1,165 @@
-# Paquete Económico de México — infografía
+# Design doc
 
-Un sitio estático que responde dos preguntas sobre el presupuesto federal:
-**de dónde sale el dinero** y **a dónde va**. Con el boquete entre ambos —
-la deuda del año — como el elemento visual central, no como una nota al pie.
+## Para quién y para qué
 
-## La idea en una imagen
+Para cualquier persona que pague impuestos en México y nunca haya abierto un
+documento de la Secretaría de Hacienda. No para economistas: ellos ya tienen
+los PDFs.
 
-Los diagramas Sankey de estados de resultados corporativos funcionan porque
-la utilidad neta sale por la derecha: la empresa cobra más de lo que gasta.
-El presupuesto público mexicano funciona al revés, y ahí está lo interesante.
+El sitio tiene un solo trabajo: que alguien entienda, en menos de un minuto,
+que **el gobierno gasta más de lo que cobra y la diferencia la pide
+prestada**. Todo lo demás — el desglose, la comparación entre años, los
+cambios de la ley — existe para que quien quiera hurgar pueda hacerlo, pero
+no es lo que tiene que quedar grabado.
+
+## El hallazgo que organiza todo
+
+La Ley de Ingresos y el gasto cuadran exacto:
 
 ```
-Ingresos          8,721 mmp  ─┐
-                               ├──►  Gasto neto total   10,115 mmp
-Deuda del año     1,394 mmp  ─┘
+                              2027            2026
+Ley de Ingresos (total)   10,636,488.1   10,193,683.6   millones de pesos
+Gasto total (devengado)   10,636,488.1   10,193,683.6
 ```
 
-El déficit **entra por la izquierda como fuente de recursos**, junto a los
-impuestos. Es la respuesta gráfica a "¿de dónde sale el dinero?": de cada
-$100 que gasta el gobierno federal en 2026, $86 los recauda y $14 los pide
-prestados.
+No es coincidencia contable: la Ley de Ingresos lista la deuda como un
+renglón de ingreso más, junto al ISR y al IVA. El "boquete" no es algo que
+haya que calcular ni deducir — está escrito en la ley como una entrada de
+dinero.
 
-Los tres números cuadran exacto (PPEF 2026): 8,721,057.3 + 1,393,770.6 =
-10,114,827.9 mdp, y ese 1,393,770.6 es literalmente el balance
-presupuestario publicado. No hay que forzar nada.
+Eso permite un diagrama que cierra perfecto, con la deuda entrando por la
+izquierda:
+
+```
+Impuestos          6,263.9 ─┐
+IMSS/ISSSTE/CFE    1,386.3 ─┤
+Petróleo             984.5 ─┼──►  10,636.5  ──┬─► Programas y servicios  7,432.5
+Derechos y cobros    521.8 ─┤                 ├─► Intereses de la deuda  1,575.0
+Deuda nueva        1,480.0 ─┘                 ├─► Estados y municipios   1,547.6
+                                              └─► Deudas del año pasado     81.4
+```
+
+Y produce la frase que abre el sitio: **de cada $100 que el gobierno planea
+gastar en 2027, 14 los pide prestados**.
+
+Un detalle que el color tiene que enseñar solo: la deuda entra roja por la
+izquierda y los intereses salen rojos por la derecha. Son el mismo dinero en
+dos momentos. En 2027 los intereses (1,575.0) son más de lo que se reparte a
+los 32 estados juntos (1,547.6).
+
+## Decisiones de diseño
+
+### Paleta: tintas de billete
+
+Fondo verde intaglio profundo (`#0D2622`), el del reverso de los billetes
+mexicanos, con las denominaciones como paleta de datos: azul del $500 para
+impuestos, morado del $50 para seguridad social, ocre del $1000 para
+petróleo, verde del $200 para derechos, rojo del $100 para deuda.
+
+Se descartó el fondo crema con serif y acento terracota, que es a lo que
+tiende cualquier página de datos hecha hoy, y el negro con un solo acento
+fluorescente. El fondo oscuro también hace que las cintas de colores se lean
+como tinta sobre papel de seguridad, que es literalmente el material del
+tema.
+
+El rojo está reservado para la deuda y para nada más. Es el único color con
+significado moral en la página.
+
+### Tipografía: una familia, dos anchos
+
+Archivo variable, aprovechando su eje de ancho. Títulos en `wdth 118 / wght
+760`; texto en `wdth 100 / wght 400`. Los números usan cifras tabulares
+(`tabular-nums`), que no es decorativo: sin ellas, las columnas de una tabla
+financiera bailan y se vuelven imposibles de comparar de un vistazo.
+
+### El héroe: cien cuadritos
+
+En lugar de un número gigante con degradado, la portada es una cuadrícula de
+**100 cuadritos**, uno por cada peso que el gobierno planea gastar, coloreados
+según de dónde viene cada uno. Catorce están en rojo.
+
+Es concreto, es contable a mano, y funciona sin saber leer una gráfica. Al
+pasar el cursor o tocar un cuadrito, el sitio dice de dónde salió ese peso.
+
+El reparto usa el método de mayores residuos, así que la suma da 100 exacta
+en ambos años — no 99 ni 101, que es lo que pasa si se redondea cada rubro
+por separado.
+
+Esta es la única pieza donde el diseño se pone ruidoso. Todo lo demás está
+deliberadamente callado.
+
+### Movimiento
+
+Un solo momento orquestado: los cien cuadritos entran escalonados al cargar,
+7 milisegundos entre uno y otro. Fuera de eso, la animación solo responde a
+lo que hace la persona — abrir un nodo, cambiar de año, cambiar de unidad.
+`prefers-reduced-motion` apaga todo.
+
+## Interacción
+
+Cuatro cosas con las que jugar:
+
+**Cambiar de año.** Botón permanente arriba. Todo se recalcula: la portada,
+el flujo, la tabla.
+
+**Cambiar de unidad.** El mismo número visto de cuatro maneras: pesos, % del
+PIB, "de cada $100" y pesos por persona al año. La misma cifra deja de ser
+abstracta cuando dice *$47,274 por persona* en vez de *6.26 billones*.
+
+**Abrir el flujo.** Cada bloque con desglose se abre al tocarlo. El IEPS baja
+hasta el nivel de producto: gasolina, cerveza, tabaco, refrescos, plaguicidas,
+videojuegos con violencia. Ese último renglón existe en la ley con una
+estimación de cero pesos, y es el tipo de cosa que la gente encuentra sola y
+comparte.
+
+**Ver la tabla.** Los mismos datos en texto, con los dos años lado a lado,
+para quien quiera verificar contra el PDF.
+
+## Honestidad del dato
+
+Cuatro advertencias van en el sitio, no escondidas en un pie de página:
+
+1. **Proyecto ≠ aprobado.** 2027 es una propuesta que el Congreso puede
+   cambiar hasta noviembre. 2026 ya está aprobado. Cada pantalla lo marca.
+2. **Bolsa total ≠ gasto del año.** Difieren en los pagos que se difieren a
+   enero. El sitio usa la bolsa porque es lo único que hace cuadrar el flujo,
+   y lo dice donde aparece.
+3. **Nominal ≠ real.** Las comparaciones usan las variaciones reales
+   publicadas por la SHCP, copiadas tal cual. No las calculamos.
+4. **La población es aproximada.** Viene de CONAPO, no de Hacienda, y está
+   marcada como editable en el JSON.
+
+Los subtotales suman exacto a su total en los dos años. Cuando el documento
+original publicaba el desglose redondeado a miles de millones, un renglón
+absorbe la diferencia y viene marcado con `"residual": true` en los datos.
 
 ## Arquitectura
 
 ```
-data/2026.json          ← un archivo por año, mismo esquema
-data/2027.json
-data/manifest.json      ← qué años existen y cuál es comparable con cuál
-schema/paquete.schema.json
-scripts/validate.mjs    ← portero: si truena, no se despliega
-EXTRACTION.md           ← el prompt que produce los JSON
-src/                    ← el sitio, 100% data-driven
+index.html          el sitio entero
+data/paquete.json   todas las cifras
 ```
 
-Cero números hardcodeados en el sitio. Los nodos y flujos del Sankey se
-derivan del JSON; agregar un año es agregar un archivo y una línea al
-manifest.
+Sin build, sin dependencias, sin framework. La única petición externa es la
+tipografía de Google Fonts. El sitio lee el JSON al cargar y dibuja todo,
+incluido el diagrama de flujo, que es SVG generado a mano — no hay librería
+de gráficas.
 
-### El flujo para 2027
+La razón de no usar D3 ni ECharts: el diagrama tiene una topología fija de
+tres columnas y unos veinte nodos. Escribirlo directo son cien líneas, no
+depende de un CDN que se puede caer, y se puede modificar sin aprender la
+API de nadie.
 
-1. Sale el CGPE 2027 → PDF a markdown.
-2. Prompt de `EXTRACTION.md` → `data/2027.json`.
-3. `node scripts/validate.mjs` → si truena, se pega el error de vuelta al
-   modelo y se corrige.
-4. Commit. GitHub Actions revalida y publica en Pages.
+## Lo que quedó fuera, a propósito
 
-El paso 3 es el que hace que esto sea seguro. Sin él, un IVA con un dígito
-de más se publica sin que nadie lo note.
+**Desglose por ramo** (Bienestar, Educación, Salud por separado). No viene en
+los Criterios Generales; requiere los datos abiertos del Proyecto de
+Presupuesto de Egresos, que se publican después. El sitio funciona completo
+sin eso y se puede enriquecer cuando lleguen.
 
-### Por qué un validador y no solo un esquema
+**Series históricas.** Dos años ya cuentan la historia. Diez la vuelven un
+ejercicio de analista.
 
-Un JSON Schema comprueba que los campos existan y sean números. No comprueba
-que los números signifiquen algo. Las identidades contables sí:
-`gasto − ingresos = déficit`, `padre = suma de hijos`, `monto / PIB = % del
-PIB publicado`. Esas tres atrapan casi cualquier error de transcripción,
-porque el documento publica los totales *y* los componentes, y un error rompe
-la consistencia entre ambos.
-
-## Las cinco trampas del dato
-
-Documentadas porque son la diferencia entre una infografía correcta y una
-que se ve bien y está mal.
-
-**1. Dos clasificaciones ortogonales de ingresos.** El documento corta por
-petroleros/no petroleros *y* por Gobierno Federal/organismos. Sumar renglones
-a ciegas duplica. El árbol del Anexo II.6 es el único internamente
-consistente y es el canónico. Efecto colateral conocido: el IAEEH aparece
-dentro de tributarios siendo un impuesto petrolero. Va marcado con `nota` y
-sale en el tooltip.
-
-**2. Pagado vs devengado.** Difieren en el diferimiento de pagos (78,856 mdp
-en 2026). El árbol principal usa **pagado**, porque es el único que cierra la
-identidad del Sankey. Las clasificaciones económica y funcional usan
-**devengado**, que es como las publica SHCP. El sitio lo dice donde
-corresponde.
-
-**3. Nominal vs real.** Comparar 2026 con 2027 en pesos corrientes infla el
-crecimiento por el deflactor (4.8% en 2026). Por eso `macro.deflactor_pib_pct`
-es campo obligatorio y el sitio abre en **% del PIB**, que es la comparación
-honesta. Pesos nominales y pesos reales son toggles secundarios.
-
-**4. PPEF ≠ PEF.** Lo que sale en septiembre es el proyecto del Ejecutivo; la
-Cámara aprueba algo distinto en noviembre. `meta.tipo_documento` y
-`meta.comparable_con` lo hacen explícito, y la comparación por defecto es
-PPEF contra PPEF.
-
-**5. El CGPE no trae desglose por ramo.** Trae narrativa ("cuatro ramos
-concentran 52.8%") pero no la tabla. Para llegar a Bienestar / Educación /
-Salud hacen falta los datos abiertos del PPEF de Transparencia Presupuestaria,
-que salen después. Por eso `clasificaciones_gasto.administrativa` es opcional:
-el sitio funciona completo sin ella y se enriquece cuando llegue.
-
-## Sitio
-
-**Stack.** HTML + JS estático, sin build step obligatorio. ECharts trae Sankey
-nativo y ahorra un día contra d3-sankey a mano. Si terminamos necesitando
-control fino sobre el layout, se cambia después sin tocar los datos: esa es
-la ventaja de separar la capa de datos.
-
-**Vistas.**
-- Sankey principal, nivel 1–3, ~14 nodos. Es la portada.
-- Pestañas del gasto: económica / funcional / (administrativa, cuando exista).
-- Comparación 2026 vs 2027: barras de variación por rubro, empatadas por `id`.
-- Tabla de datos con `fuente` por renglón. Es lo que hace esto auditable y lo
-  que lo separa de una infografía de gobierno.
-
-**Unidades.** Toggle entre % del PIB (default), pesos nominales, pesos reales
-y pesos por persona. La última necesita población de CONAPO, que no viene en
-el CGPE.
-
-**Móvil.** El Sankey no funciona en 380px. Fallback a barras apiladas
-enfrentadas —ingresos arriba, gasto abajo, el boquete en medio— que conserva
-la idea sin necesitar el diagrama.
-
-**Nodos chicos.** "Otros impuestos" son 300 mdp contra 5.8 millones: invisible
-y además rompe el layout. Umbral de agregación configurable, con los
-agrupados accesibles en la tabla.
-
-## Estado
-
-Hecho:
-- `schema/paquete.schema.json`
-- `data/2026.json` — extraído del CGPE 2026, validando
-- `scripts/validate.mjs` — probado contra errores inyectados
-- `data/manifest.json`
-- `EXTRACTION.md`
-
-Falta:
-- `src/` — el sitio
-- Workflow de GitHub Actions (validar en PR, publicar en push a main)
-- `data/2027.json` cuando salga el documento
-
-## Nota sobre la referencia visual
-
-El estilo de los Sankey de estados de resultados que circulan es de
-SankeyArt. La estructura del diagrama es una convención genérica, pero la
-paleta, tipografía y composición son suyas. La implementación va con
-identidad propia.
+**Calculadora de "cuánto pagas tú".** Requiere supuestos sobre incidencia
+fiscal que ningún documento oficial respalda, y sería inventar precisión que
+no existe.

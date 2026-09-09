@@ -1,0 +1,541 @@
+{
+  "_lee_esto": "Todos los montos en MILLONES DE PESOS CORRIENTES. Los subtotales suman exacto a su padre; cuando el documento publicaba el desglose en miles de millones, el último renglón absorbe el redondeo y viene marcado con 'residual': true. Nada aquí está calculado por nosotros salvo eso: las variaciones reales las publica la SHCP y se copiaron tal cual.",
+  "fuente": {
+    "portal": "https://www.finanzaspublicas.hacienda.gob.mx/es/Finanzas_Publicas/Paquete_Economico_y_Presupuesto",
+    "documentos": [
+      "Criterios Generales de Política Económica 2026 (SHCP)",
+      "Criterios Generales de Política Económica 2027 (SHCP)",
+      "Iniciativa de Ley de Ingresos de la Federación para el Ejercicio Fiscal 2027"
+    ],
+    "actualizado": "2026-09-08"
+  },
+  "anios": {
+    "2026": {
+      "etiqueta": "2026",
+      "estatus": "Aprobado por la Cámara de Diputados",
+      "nota_estatus": "Cifras del presupuesto ya aprobado. Se pueden comparar con el proyecto de 2027, pero el de 2027 todavía puede cambiar en el Congreso.",
+      "macro": {
+        "pib": 38715900,
+        "deflactor": 4.8,
+        "inflacion": 3.0,
+        "tipo_cambio": 19.3,
+        "petroleo_usd": 54.9,
+        "poblacion": 131900000,
+        "poblacion_nota": "Proyección CONAPO, aproximada. No viene en los documentos de Hacienda."
+      },
+      "totales": {
+        "bolsa": 10193683.6,
+        "ingresos": 8721057.3,
+        "deuda": 1472626.3,
+        "gasto_pagado": 10114827.9,
+        "deficit": 1393770.6,
+        "deuda_acumulada": 20259590.7,
+        "deuda_acumulada_pct_pib": 52.3
+      },
+      "fuentes": [
+        {
+          "id": "impuestos",
+          "nombre": "Impuestos",
+          "monto": 5838571.0,
+          "tono": "azul",
+          "explica": "Lo que pagamos todos: sobre lo que ganamos, lo que compramos y lo que importamos.",
+          "hijos": [
+            {
+              "id": "isr",
+              "nombre": "ISR",
+              "detalle": "Impuesto sobre la renta: lo que se descuenta de sueldos, honorarios y utilidades de empresas.",
+              "monto": 3070000
+            },
+            {
+              "id": "iva",
+              "nombre": "IVA",
+              "detalle": "16% sobre casi todo lo que compras. Lo paga quien consume.",
+              "monto": 1589100
+            },
+            {
+              "id": "ieps",
+              "nombre": "IEPS",
+              "detalle": "Impuesto especial sobre gasolina, refrescos, cigarros, alcohol y otros productos.",
+              "monto": 761500
+            },
+            {
+              "id": "importacion",
+              "nombre": "Importaciones",
+              "detalle": "Aranceles a productos que entran al país.",
+              "monto": 254800
+            },
+            {
+              "id": "otros_imp",
+              "nombre": "Otros impuestos",
+              "detalle": "Autos nuevos, extracción de hidrocarburos, multas y recargos fiscales.",
+              "monto": 163171.0,
+              "residual": true
+            }
+          ]
+        },
+        {
+          "id": "organismos",
+          "nombre": "IMSS, ISSSTE y CFE",
+          "monto": 1301078.5,
+          "tono": "morado",
+          "explica": "Cuotas de seguridad social que pagan patrones y trabajadores, más la venta de electricidad."
+        },
+        {
+          "id": "petroleros",
+          "nombre": "Petróleo",
+          "monto": 1204277.7,
+          "tono": "ocre",
+          "explica": "Ventas de Pemex y lo que el Estado cobra por extraer hidrocarburos.",
+          "hijos": [
+            {
+              "id": "pemex",
+              "nombre": "Ventas de Pemex",
+              "detalle": "Ingresos propios de la empresa.",
+              "monto": 971677.7,
+              "residual": true
+            },
+            {
+              "id": "gf_petroleo",
+              "nombre": "Derechos al Estado",
+              "detalle": "Lo que Pemex y privados le pagan al gobierno por extraer petróleo.",
+              "monto": 232600.0
+            }
+          ]
+        },
+        {
+          "id": "no_tributarios",
+          "nombre": "Derechos y cobros",
+          "monto": 377130.1,
+          "tono": "verde",
+          "explica": "Pasaportes, permisos, concesiones, uso de agua, multas no fiscales."
+        },
+        {
+          "id": "deuda",
+          "nombre": "Deuda nueva",
+          "monto": 1472626.3,
+          "tono": "rojo",
+          "explica": "Dinero que el gobierno pide prestado este año porque lo que recauda no alcanza. Hay que devolverlo con intereses.",
+          "es_deuda": true
+        }
+      ],
+      "destinos": [
+        {
+          "id": "programable",
+          "nombre": "Programas y servicios",
+          "monto": 7094708.8,
+          "tono": "arena",
+          "explica": "Todo lo que el gobierno decide cada año: pensiones, escuelas, hospitales, carreteras, sueldos, seguridad.",
+          "hijos": [
+            {
+              "id": "social",
+              "nombre": "Desarrollo social",
+              "detalle": "Pensiones, salud, educación, vivienda, becas y programas del Bienestar.",
+              "monto": 4916108.8,
+              "residual": true
+            },
+            {
+              "id": "economico",
+              "nombre": "Desarrollo económico",
+              "detalle": "Energía, agricultura, comunicaciones, infraestructura, apoyo a Pemex y CFE.",
+              "monto": 1691000
+            },
+            {
+              "id": "gobierno",
+              "nombre": "Gobierno",
+              "detalle": "Seguridad, defensa, justicia, hacienda, relaciones exteriores.",
+              "monto": 320900
+            },
+            {
+              "id": "poderes",
+              "nombre": "Poderes y autónomos",
+              "detalle": "Congreso, Poder Judicial, INE, INEGI, CNDH.",
+              "monto": 160100
+            },
+            {
+              "id": "fondos",
+              "nombre": "Fondos de estabilización",
+              "detalle": "Ahorro para emergencias y caídas de ingresos.",
+              "monto": 6600
+            }
+          ]
+        },
+        {
+          "id": "intereses",
+          "nombre": "Intereses de la deuda",
+          "monto": 1572073.3,
+          "tono": "rojo",
+          "explica": "Solo los intereses de lo que ya se debe. No incluye pagar el capital.",
+          "es_deuda": true
+        },
+        {
+          "id": "participaciones",
+          "nombre": "Estados y municipios",
+          "monto": 1456045.9,
+          "tono": "teal",
+          "explica": "Dinero que por ley se reparte a los 32 estados y sus municipios. La Federación no decide en qué se gasta."
+        },
+        {
+          "id": "adefas",
+          "nombre": "Deudas del año pasado",
+          "monto": 70855.7,
+          "tono": "gris",
+          "explica": "Facturas de ejercicios anteriores que se pagan este año."
+        }
+      ]
+    },
+    "2027": {
+      "etiqueta": "2027",
+      "estatus": "Proyecto del Ejecutivo",
+      "nota_estatus": "Es una propuesta. La Cámara de Diputados la discute y puede modificarla antes del 15 de noviembre.",
+      "macro": {
+        "pib": 39419400,
+        "deflactor": 4.0,
+        "inflacion": 3.0,
+        "tipo_cambio": 17.9,
+        "petroleo_usd": 61.8,
+        "poblacion": 132500000,
+        "poblacion_nota": "Proyección CONAPO, aproximada. No viene en los documentos de Hacienda."
+      },
+      "totales": {
+        "bolsa": 10636488.1,
+        "ingresos": 9156528.9,
+        "deuda": 1479959.2,
+        "gasto_pagado": 10515087.7,
+        "deficit": 1358558.8,
+        "deuda_acumulada": 21665995.8,
+        "deuda_acumulada_pct_pib": 55.0
+      },
+      "fuentes": [
+        {
+          "id": "impuestos",
+          "nombre": "Impuestos",
+          "monto": 6263886.8,
+          "tono": "azul",
+          "explica": "Lo que pagamos todos: sobre lo que ganamos, lo que compramos y lo que importamos.",
+          "hijos": [
+            {
+              "id": "isr",
+              "nombre": "ISR",
+              "detalle": "Impuesto sobre la renta: lo que se descuenta de sueldos, honorarios y utilidades de empresas.",
+              "monto": 3288975.3
+            },
+            {
+              "id": "iva",
+              "nombre": "IVA",
+              "detalle": "16% sobre casi todo lo que compras. Lo paga quien consume.",
+              "monto": 1768017.3
+            },
+            {
+              "id": "ieps",
+              "nombre": "IEPS",
+              "detalle": "Impuesto especial sobre productos concretos. La Ley de Ingresos lo desglosa uno por uno.",
+              "monto": 828256.0,
+              "hijos": [
+                {
+                  "id": "ieps_gasolina",
+                  "nombre": "Gasolina y diésel",
+                  "monto": 538549.2
+                },
+                {
+                  "id": "ieps_alcohol",
+                  "nombre": "Cerveza y bebidas alcohólicas",
+                  "monto": 76990.0
+                },
+                {
+                  "id": "ieps_saborizadas",
+                  "nombre": "Bebidas saborizadas",
+                  "monto": 76920.5
+                },
+                {
+                  "id": "ieps_tabaco",
+                  "nombre": "Tabacos labrados",
+                  "monto": 64889.5
+                },
+                {
+                  "id": "ieps_alimentos",
+                  "nombre": "Alimentos con alta densidad calórica",
+                  "monto": 45350.4
+                },
+                {
+                  "id": "ieps_fosiles",
+                  "nombre": "Combustibles fósiles",
+                  "monto": 10897.5
+                },
+                {
+                  "id": "ieps_telecom",
+                  "nombre": "Telecomunicaciones",
+                  "monto": 8305.7
+                },
+                {
+                  "id": "ieps_apuestas",
+                  "nombre": "Juegos con apuestas y sorteos",
+                  "monto": 4318.8
+                },
+                {
+                  "id": "ieps_plaguicidas",
+                  "nombre": "Plaguicidas",
+                  "monto": 1939.6
+                },
+                {
+                  "id": "ieps_energetizantes",
+                  "nombre": "Bebidas energetizantes",
+                  "monto": 94.8
+                },
+                {
+                  "id": "ieps_videojuegos",
+                  "nombre": "Videojuegos con violencia",
+                  "monto": 0.0
+                }
+              ]
+            },
+            {
+              "id": "importacion",
+              "nombre": "Importaciones",
+              "detalle": "Aranceles a productos que entran al país.",
+              "monto": 232511.2
+            },
+            {
+              "id": "accesorios",
+              "nombre": "Multas y recargos fiscales",
+              "detalle": "Lo que se cobra a quien pagó tarde o mal.",
+              "monto": 120971.3
+            },
+            {
+              "id": "isan",
+              "nombre": "Autos nuevos",
+              "detalle": "ISAN: impuesto sobre automóviles nuevos.",
+              "monto": 17426.1
+            },
+            {
+              "id": "iaeeh",
+              "nombre": "Extracción de hidrocarburos",
+              "detalle": "IAEEH: se cobra por hectárea concesionada.",
+              "monto": 7501.0
+            },
+            {
+              "id": "otros_imp",
+              "nombre": "Impuestos de años anteriores",
+              "detalle": "Adeudos pendientes de ejercicios pasados.",
+              "monto": 228.6
+            }
+          ]
+        },
+        {
+          "id": "organismos",
+          "nombre": "IMSS, ISSSTE y CFE",
+          "monto": 1386338.9,
+          "tono": "morado",
+          "explica": "Cuotas de seguridad social que pagan patrones y trabajadores, más la venta de electricidad.",
+          "hijos": [
+            {
+              "id": "cuotas_imss",
+              "nombre": "Cuotas al Seguro Social",
+              "detalle": "Lo que patrones y trabajadores aportan al IMSS.",
+              "monto": 702564.7
+            },
+            {
+              "id": "cfe",
+              "nombre": "Venta de electricidad (CFE)",
+              "detalle": "Ingresos propios de la Comisión Federal de Electricidad.",
+              "monto": 509863.0
+            },
+            {
+              "id": "imss_serv",
+              "nombre": "Servicios del IMSS",
+              "detalle": "Ingresos propios del instituto por servicios.",
+              "monto": 100756.8
+            },
+            {
+              "id": "issste_serv",
+              "nombre": "Servicios del ISSSTE",
+              "detalle": "Ingresos propios del instituto por servicios.",
+              "monto": 73154.4
+            }
+          ]
+        },
+        {
+          "id": "petroleros",
+          "nombre": "Petróleo",
+          "monto": 984539.7,
+          "tono": "ocre",
+          "explica": "Ventas de Pemex y lo que el Estado cobra por extraer hidrocarburos. Cae 20.8% real: el mayor desplome del paquete.",
+          "hijos": [
+            {
+              "id": "pemex",
+              "nombre": "Ventas de Pemex",
+              "detalle": "Ingresos propios de la empresa.",
+              "monto": 773765.7
+            },
+            {
+              "id": "fmp",
+              "nombre": "Fondo Mexicano del Petróleo",
+              "detalle": "Lo que el fondo transfiere al gobierno por la renta petrolera.",
+              "monto": 210774.0
+            }
+          ]
+        },
+        {
+          "id": "no_tributarios",
+          "nombre": "Derechos y cobros",
+          "monto": 521763.5,
+          "tono": "verde",
+          "explica": "Pasaportes, permisos, concesiones, uso de agua, multas no fiscales. Sube 34% real.",
+          "hijos": [
+            {
+              "id": "aprovechamientos",
+              "nombre": "Aprovechamientos",
+              "detalle": "Multas no fiscales, recuperaciones de capital, remanentes.",
+              "monto": 329479.8
+            },
+            {
+              "id": "derechos",
+              "nombre": "Derechos",
+              "detalle": "Pasaportes, permisos, espectro, agua, puertos.",
+              "monto": 177185.9
+            },
+            {
+              "id": "productos",
+              "nombre": "Productos",
+              "detalle": "Rendimientos de bienes del Estado.",
+              "monto": 15077.3
+            },
+            {
+              "id": "mejoras",
+              "nombre": "Contribuciones de mejoras",
+              "detalle": "Obras de infraestructura hidráulica.",
+              "monto": 20.5
+            }
+          ]
+        },
+        {
+          "id": "deuda",
+          "nombre": "Deuda nueva",
+          "monto": 1479959.2,
+          "tono": "rojo",
+          "explica": "Dinero que el gobierno pide prestado este año porque lo que recauda no alcanza. El Gobierno Federal se endeuda por 1,570,311 millones y difiere 121,400 millones de pagos a enero; el superávit de Pemex, CFE, IMSS e ISSSTE resta 211,752 millones. Todo el endeudamiento neto propuesto es interno: el externo es cero.",
+          "es_deuda": true
+        }
+      ],
+      "destinos": [
+        {
+          "id": "programable",
+          "nombre": "Programas y servicios",
+          "monto": 7432529.7,
+          "tono": "arena",
+          "explica": "Todo lo que el gobierno decide cada año: pensiones, escuelas, hospitales, carreteras, sueldos, seguridad.",
+          "hijos": [
+            {
+              "id": "social",
+              "nombre": "Desarrollo social",
+              "detalle": "Pensiones, salud, educación, vivienda, becas y programas del Bienestar. Sube 6.1% real.",
+              "monto": 5384929.7,
+              "residual": true
+            },
+            {
+              "id": "economico",
+              "nombre": "Desarrollo económico",
+              "detalle": "Energía, agricultura, comunicaciones, infraestructura. Baja 13% real, sobre todo por menos apoyo financiero a Pemex.",
+              "monto": 1518700
+            },
+            {
+              "id": "gobierno",
+              "nombre": "Gobierno",
+              "detalle": "Seguridad, defensa, justicia, hacienda, relaciones exteriores. Sube 7.8% real.",
+              "monto": 357100
+            },
+            {
+              "id": "poderes",
+              "nombre": "Poderes y autónomos",
+              "detalle": "Congreso, Poder Judicial, INE, INEGI, CNDH.",
+              "monto": 165800
+            },
+            {
+              "id": "fondos",
+              "nombre": "Fondos de estabilización",
+              "detalle": "Ahorro para emergencias y caídas de ingresos.",
+              "monto": 6000
+            }
+          ]
+        },
+        {
+          "id": "intereses",
+          "nombre": "Intereses de la deuda",
+          "monto": 1574950.2,
+          "tono": "rojo",
+          "explica": "Solo los intereses de lo que ya se debe. No incluye pagar el capital. Es más de lo que se manda a todos los estados juntos.",
+          "es_deuda": true
+        },
+        {
+          "id": "participaciones",
+          "nombre": "Estados y municipios",
+          "monto": 1547607.9,
+          "tono": "teal",
+          "explica": "Dinero que por ley se reparte a los 32 estados y sus municipios. La Federación no decide en qué se gasta."
+        },
+        {
+          "id": "adefas",
+          "nombre": "Deudas del año pasado",
+          "monto": 81400.4,
+          "tono": "gris",
+          "explica": "Facturas de ejercicios anteriores que se pagan este año."
+        }
+      ]
+    }
+  },
+  "variaciones_reales": {
+    "_nota": "Cambio porcentual real (ya descontada la inflación) de 2027 contra 2026 aprobado. Publicado por la SHCP en el Anexo II.6 de los CGPE 2027; no lo calculamos nosotros.",
+    "ingresos": 1.7,
+    "impuestos": 3.9,
+    "no_tributarios": 34.0,
+    "organismos": 3.2,
+    "petroleros": -20.8,
+    "gasto_pagado": 0.7,
+    "programable": 1.0,
+    "intereses": -2.9,
+    "participaciones": 3.0,
+    "adefas": 11.3,
+    "social": 6.1,
+    "economico": -13.0,
+    "gobierno": 7.8,
+    "poderes": 0.4,
+    "fondos": -12.2
+  },
+  "cambios_ley": [
+    {
+      "titulo": "El gobierno podrá pedir prestado hasta 1.7 billones de pesos",
+      "que_dice": "La Ley autoriza endeudamiento interno neto de hasta 1 billón 700 mil millones de pesos. El endeudamiento externo neto autorizado es de hasta 13,500 millones de dólares.",
+      "que_significa": "Es el techo, no lo que necesariamente se va a usar. Aparte, Pemex puede endeudarse por 160,619.5 millones de pesos internos y 5,259.4 millones de dólares externos, y la CFE por 16,742 millones de pesos.",
+      "articulo": "Artículo 2o."
+    },
+    {
+      "titulo": "Baja la retención de impuestos sobre tus intereses bancarios",
+      "que_dice": "La tasa de retención anual sobre los intereses que pagan los bancos queda en 0.68%.",
+      "que_significa": "Si tienes una cuenta de ahorro o un pagaré, el banco retiene ese porcentaje del saldo como pago provisional de ISR. La iniciativa además escribe la fórmula de cálculo dentro de la propia ley: Cetes a 28 días menos inflación, por la tasa efectiva de ISR del sector financiero.",
+      "articulo": "Artículo 24"
+    },
+    {
+      "titulo": "Retención de 2.5% para empresas que venden por plataformas digitales",
+      "que_dice": "Las personas morales que vendan bienes o servicios por internet a través de plataformas tendrán una retención de 2.5%. Sube a 20% si no dan su RFC.",
+      "que_significa": "Se empareja con el tope del régimen simplificado de personas físicas. La plataforma retiene y entera el impuesto, que es un mecanismo de cobro más efectivo que esperar la declaración.",
+      "articulo": "Artículo 25, fracción VI"
+    },
+    {
+      "titulo": "Quedan fijas las tasas por pagar impuestos tarde",
+      "que_dice": "1.38% mensual sobre saldos sin pagar. En pagos a plazos: 1.42% hasta 12 meses, 1.63% de 12 a 24 meses y 1.97% a más de 24 meses.",
+      "que_significa": "Se fijan por ley para todo el año aunque las tasas del mercado se muevan.",
+      "articulo": "Artículo 11"
+    },
+    {
+      "titulo": "Los ingresos petroleros se desploman 20.8%",
+      "que_dice": "El paquete estima 984,540 millones de pesos de ingresos petroleros, contra 1,204,278 millones aprobados para 2026.",
+      "que_significa": "El gobierno espera un peso más fuerte (17.9 por dólar contra 19.3) y menor exportación de crudo. Es la mayor caída del paquete y la razón principal de que los impuestos tengan que crecer.",
+      "articulo": "CGPE 2027"
+    },
+    {
+      "titulo": "La deuda acumulada llega a 55% del PIB",
+      "que_dice": "El saldo histórico de los requerimientos financieros del sector público pasa de 52.3% a 55.0% del PIB.",
+      "que_significa": "Es la deuda total que el país arrastra, no la del año. Cada punto adicional se traduce, tarde o temprano, en más gasto en intereses.",
+      "articulo": "CGPE 2027"
+    }
+  ]
+}
