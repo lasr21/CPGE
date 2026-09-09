@@ -1,0 +1,236 @@
+{
+  "meta": {
+    "anio_fiscal": 2027,
+    "tipo_documento": "PPEF",
+    "comparable_con": ["2027-PPEF", "2025-PPEF"],
+    "moneda": "MXN",
+    "unidad": "millones_pesos_corrientes",
+    "fuente_documento": "Criterios Generales de Política Económica 2026 (SHCP)",
+    "url_fuente": "",
+    "fecha_publicacion": "2025-09-08",
+    "extraido_el": "2026-09-08",
+    "advertencias": [
+      "Cifras del PROYECTO (PPEF) enviado por el Ejecutivo, no del presupuesto aprobado por la Cámara de Diputados.",
+      "El desglose de ingresos tributarios proviene de una tabla en miles de millones de pesos; su suma difiere del total publicado en 229 mdp por redondeo."
+    ]
+  },
+
+  "macro": {
+    "pib_nominal_mdp": 38715900,
+    "deflactor_pib_pct": 4.8,
+    "crecimiento_real_pib_rango": [1.8, 2.8],
+    "inflacion_dic_dic_pct": 3.0,
+    "tipo_cambio_promedio": 19.3,
+    "cetes28_promedio_pct": 6.6,
+    "precio_petroleo_usd": 54.9,
+    "plataforma_produccion_mbd": 1794.0,
+    "poblacion": null
+  },
+
+  "balance": {
+    "balance_presupuestario_mdp": -1393770.6,
+    "balance_presupuestario_pct_pib": -3.6,
+    "requerimientos_extrapresupuestarios_mdp": -193579.3,
+    "rfsp_mdp": -1587349.9,
+    "rfsp_pct_pib": -4.1,
+    "shrfsp_mdp": 20259590.7,
+    "shrfsp_pct_pib": 52.3,
+    "balance_primario_mdp": 178802.6,
+    "desglose_entes": [
+      { "id": "bal_gobierno_federal", "nombre": "Gobierno Federal", "monto_mdp": -1779541.6, "pct_pib": -4.6, "confianza": "publicado", "fuente": "Tabla Balance público 2026", "color_hint": "deuda" },
+      { "id": "bal_pemex", "nombre": "Pemex", "monto_mdp": 263476.3, "pct_pib": 0.7, "confianza": "publicado", "fuente": "Tabla Balance público 2026", "color_hint": "neutro" },
+      { "id": "bal_cfe", "nombre": "CFE", "monto_mdp": 20678.5, "pct_pib": 0.1, "confianza": "publicado", "fuente": "Tabla Balance público 2026", "color_hint": "neutro" },
+      { "id": "bal_imss", "nombre": "IMSS", "monto_mdp": 77620.8, "pct_pib": 0.2, "confianza": "publicado", "fuente": "Tabla Balance público 2026", "color_hint": "neutro" },
+      { "id": "bal_issste", "nombre": "ISSSTE", "monto_mdp": 23995.4, "pct_pib": 0.1, "confianza": "publicado", "fuente": "Tabla Balance público 2026", "color_hint": "neutro" }
+    ]
+  },
+
+  "ingresos": {
+    "id": "ingresos_presupuestarios",
+    "nombre": "Ingresos presupuestarios",
+    "monto_mdp": 8721057.3,
+    "pct_pib": 22.5,
+    "confianza": "publicado",
+    "fuente": "Anexo II.6 Estimación de las finanzas públicas 2025-2026",
+    "nota": "No incluye ingresos derivados de financiamiento (deuda).",
+    "color_hint": "ingreso",
+    "hijos": [
+      {
+        "id": "ing_no_petroleros",
+        "nombre": "No petroleros",
+        "monto_mdp": 7516779.6,
+        "pct_pib": 19.4,
+        "confianza": "publicado",
+        "fuente": "Anexo II.6",
+        "color_hint": "ingreso",
+        "hijos": [
+          {
+            "id": "ing_gobierno_federal",
+            "nombre": "Gobierno Federal",
+            "monto_mdp": 6215701.1,
+            "pct_pib": 16.1,
+            "confianza": "publicado",
+            "fuente": "Anexo II.6",
+            "color_hint": "ingreso",
+            "hijos": [
+              {
+                "id": "ing_tributarios",
+                "nombre": "Ingresos tributarios",
+                "monto_mdp": 5838571.0,
+                "pct_pib": 15.1,
+                "confianza": "publicado",
+                "fuente": "Anexo II.6",
+                "color_hint": "ingreso",
+                "hijos": [
+                  { "id": "ing_isr", "nombre": "Sistema renta (ISR)", "monto_mdp": 3070000, "pct_pib": null, "confianza": "indicativo", "fuente": "Tabla 3.3.5 Ingresos tributarios (mmp)", "color_hint": "ingreso" },
+                  { "id": "ing_iva", "nombre": "IVA", "monto_mdp": 1589100, "pct_pib": null, "confianza": "indicativo", "fuente": "Tabla 3.3.5 Ingresos tributarios (mmp)", "color_hint": "ingreso" },
+                  { "id": "ing_ieps", "nombre": "IEPS", "monto_mdp": 761500, "pct_pib": null, "confianza": "indicativo", "fuente": "Tabla 3.3.5 Ingresos tributarios (mmp)", "color_hint": "ingreso" },
+                  { "id": "ing_importacion", "nombre": "Impuestos a la importación", "monto_mdp": 254800, "pct_pib": null, "confianza": "indicativo", "fuente": "Tabla 3.3.5 Ingresos tributarios (mmp)", "color_hint": "ingreso" },
+                  { "id": "ing_accesorios", "nombre": "Accesorios", "monto_mdp": 135800, "pct_pib": null, "confianza": "indicativo", "fuente": "Tabla 3.3.5 Ingresos tributarios (mmp)", "color_hint": "ingreso" },
+                  { "id": "ing_isan", "nombre": "Automóviles nuevos (ISAN)", "monto_mdp": 20200, "pct_pib": null, "confianza": "indicativo", "fuente": "Tabla 3.3.5 Ingresos tributarios (mmp)", "color_hint": "ingreso" },
+                  { "id": "ing_iaeeh", "nombre": "IAEEH", "monto_mdp": 7100, "pct_pib": null, "confianza": "indicativo", "fuente": "Tabla 3.3.5 Ingresos tributarios (mmp)", "nota": "Impuesto a la exploración y extracción de hidrocarburos: tributario, pero de origen petrolero. Cruza el corte petroleros / no petroleros.", "color_hint": "ingreso" },
+                  { "id": "ing_trib_otros", "nombre": "Otros impuestos", "monto_mdp": 300, "pct_pib": null, "confianza": "indicativo", "fuente": "Tabla 3.3.5 Ingresos tributarios (mmp)", "color_hint": "ingreso" }
+                ]
+              },
+              {
+                "id": "ing_no_tributarios",
+                "nombre": "No tributarios",
+                "monto_mdp": 377130.1,
+                "pct_pib": 1.0,
+                "confianza": "publicado",
+                "fuente": "Anexo II.6",
+                "nota": "Derechos, productos, aprovechamientos.",
+                "color_hint": "ingreso"
+              }
+            ]
+          },
+          {
+            "id": "ing_organismos_empresas",
+            "nombre": "Organismos y empresas",
+            "monto_mdp": 1301078.5,
+            "pct_pib": 3.4,
+            "confianza": "publicado",
+            "fuente": "Anexo II.6",
+            "nota": "Cuotas y aportaciones del IMSS e ISSSTE, más ingresos propios de CFE.",
+            "color_hint": "ingreso"
+          }
+        ]
+      },
+      {
+        "id": "ing_petroleros",
+        "nombre": "Petroleros",
+        "monto_mdp": 1204277.7,
+        "pct_pib": 3.1,
+        "confianza": "publicado",
+        "fuente": "Anexo II.6",
+        "color_hint": "ingreso",
+        "hijos": [
+          { "id": "ing_petro_pemex", "nombre": "Ingresos propios de Pemex", "monto_mdp": 971700, "pct_pib": null, "confianza": "indicativo", "fuente": "Tabla 3.3.3 Ingresos presupuestarios (mmp de 2026)", "color_hint": "ingreso" },
+          { "id": "ing_petro_gf", "nombre": "Gobierno Federal (derechos petroleros)", "monto_mdp": 232600, "pct_pib": null, "confianza": "indicativo", "fuente": "Tabla 3.3.3 Ingresos presupuestarios (mmp de 2026)", "color_hint": "ingreso" }
+        ]
+      }
+    ]
+  },
+
+  "gasto": {
+    "id": "gasto_neto_total",
+    "nombre": "Gasto neto total pagado",
+    "monto_mdp": 10114827.9,
+    "pct_pib": 26.1,
+    "confianza": "publicado",
+    "fuente": "Anexo II.6 Estimación de las finanzas públicas 2025-2026",
+    "color_hint": "gasto",
+    "hijos": [
+      {
+        "id": "gasto_programable",
+        "nombre": "Gasto programable",
+        "monto_mdp": 7015853.1,
+        "pct_pib": 18.1,
+        "confianza": "publicado",
+        "fuente": "Anexo II.6",
+        "nota": "Pagado. El devengado (7,094,708.8 mdp) incluye 78,855.7 mdp de diferimiento de pagos.",
+        "color_hint": "gasto"
+      },
+      {
+        "id": "gasto_no_programable",
+        "nombre": "Gasto no programable",
+        "monto_mdp": 3098974.9,
+        "pct_pib": 8.0,
+        "confianza": "publicado",
+        "fuente": "Anexo II.6",
+        "nota": "Compromisos que el gobierno no decide cada año: intereses de deuda, participaciones a estados y adeudos.",
+        "color_hint": "gasto_rigido",
+        "hijos": [
+          { "id": "gasto_costo_financiero", "nombre": "Costo financiero de la deuda", "monto_mdp": 1572073.3, "pct_pib": 4.1, "confianza": "publicado", "fuente": "Anexo II.6", "nota": "Solo intereses. No incluye amortización de capital.", "color_hint": "gasto_rigido" },
+          { "id": "gasto_participaciones", "nombre": "Participaciones a estados y municipios", "monto_mdp": 1456045.9, "pct_pib": 3.8, "confianza": "publicado", "fuente": "Anexo II.6", "color_hint": "gasto_rigido" },
+          { "id": "gasto_adefas", "nombre": "Adefas", "monto_mdp": 70855.7, "pct_pib": 0.2, "confianza": "publicado", "fuente": "Anexo II.6", "nota": "Adeudos de ejercicios fiscales anteriores.", "color_hint": "gasto_rigido" }
+        ]
+      }
+    ]
+  },
+
+  "clasificaciones_gasto": {
+    "economica": {
+      "id": "prog_economica",
+      "nombre": "Gasto programable devengado",
+      "monto_mdp": 7094708.8,
+      "confianza": "publicado",
+      "fuente": "Tabla Gasto programable en clasificación económica (mmp)",
+      "color_hint": "gasto",
+      "hijos": [
+        {
+          "id": "eco_corriente", "nombre": "Gasto corriente", "monto_mdp": 4138700, "confianza": "indicativo", "fuente": "Tabla clasificación económica (mmp)", "color_hint": "gasto",
+          "hijos": [
+            { "id": "eco_servicios_personales", "nombre": "Servicios personales", "monto_mdp": 1846400, "confianza": "indicativo", "fuente": "Tabla clasificación económica (mmp)", "color_hint": "gasto" },
+            { "id": "eco_subsidios", "nombre": "Subsidios", "monto_mdp": 1236400, "confianza": "indicativo", "fuente": "Tabla clasificación económica (mmp)", "color_hint": "gasto" },
+            { "id": "eco_otros_operacion", "nombre": "Otros de operación", "monto_mdp": 1055900, "confianza": "indicativo", "fuente": "Tabla clasificación económica (mmp)", "color_hint": "gasto" }
+          ]
+        },
+        { "id": "eco_pensiones", "nombre": "Pensiones y jubilaciones", "monto_mdp": 1704200, "confianza": "indicativo", "fuente": "Tabla clasificación económica (mmp)", "color_hint": "gasto_rigido" },
+        {
+          "id": "eco_inversion", "nombre": "Gasto de inversión", "monto_mdp": 1251900, "confianza": "indicativo", "fuente": "Tabla clasificación económica (mmp)", "color_hint": "gasto",
+          "hijos": [
+            { "id": "eco_inv_fisica", "nombre": "Inversión física", "monto_mdp": 960100, "confianza": "indicativo", "fuente": "Tabla clasificación económica (mmp)", "color_hint": "gasto" },
+            { "id": "eco_inv_financiera", "nombre": "Inversión financiera y otros", "monto_mdp": 276400, "confianza": "indicativo", "fuente": "Tabla clasificación económica (mmp)", "color_hint": "gasto" },
+            { "id": "eco_inv_subsidios", "nombre": "Subsidios de inversión", "monto_mdp": 15400, "confianza": "indicativo", "fuente": "Tabla clasificación económica (mmp)", "color_hint": "gasto" }
+          ]
+        }
+      ]
+    },
+    "funcional": {
+      "id": "prog_funcional",
+      "nombre": "Gasto programable devengado",
+      "monto_mdp": 7094708.8,
+      "confianza": "publicado",
+      "fuente": "Tabla Gasto programable en clasificación funcional (mmp de 2026)",
+      "color_hint": "gasto",
+      "hijos": [
+        {
+          "id": "fun_apf", "nombre": "Administración Pública Federal", "monto_mdp": 6934700, "confianza": "indicativo", "fuente": "Tabla clasificación funcional (mmp)", "color_hint": "gasto",
+          "hijos": [
+            { "id": "fun_desarrollo_social", "nombre": "Desarrollo social", "monto_mdp": 4916100, "confianza": "indicativo", "fuente": "Tabla clasificación funcional (mmp)", "nota": "Salud, educación, protección social, vivienda. 70.9% del gasto de la APF.", "color_hint": "gasto" },
+            { "id": "fun_desarrollo_economico", "nombre": "Desarrollo económico", "monto_mdp": 1691000, "confianza": "indicativo", "fuente": "Tabla clasificación funcional (mmp)", "color_hint": "gasto" },
+            { "id": "fun_gobierno", "nombre": "Gobierno", "monto_mdp": 320900, "confianza": "indicativo", "fuente": "Tabla clasificación funcional (mmp)", "nota": "Seguridad, justicia, relaciones exteriores, hacienda.", "color_hint": "gasto" },
+            { "id": "fun_fondos_estabilizacion", "nombre": "Fondos de estabilización", "monto_mdp": 6600, "confianza": "indicativo", "fuente": "Tabla clasificación funcional (mmp)", "color_hint": "gasto" }
+          ]
+        },
+        { "id": "fun_poderes_autonomos", "nombre": "Poderes, órganos autónomos, INEGI y TFJFA", "monto_mdp": 160100, "confianza": "indicativo", "fuente": "Tabla clasificación funcional (mmp)", "color_hint": "gasto" }
+      ]
+    }
+  },
+
+  "transferencias_estados": {
+    "id": "transferencias_federales",
+    "nombre": "Transferencias federales a entidades federativas",
+    "monto_mdp": 2810800,
+    "confianza": "indicativo",
+    "fuente": "Tabla Transferencias federales a las entidades federativas (mmp)",
+    "nota": "Vista transversal. Las participaciones ya están contadas en gasto no programable y las aportaciones dentro de gasto programable: NO sumar este nodo al total.",
+    "color_hint": "neutro",
+    "hijos": [
+      { "id": "trans_participaciones", "nombre": "Participaciones", "monto_mdp": 1456000, "confianza": "indicativo", "fuente": "Tabla transferencias federales (mmp)", "color_hint": "neutro" },
+      { "id": "trans_aportaciones", "nombre": "Aportaciones", "monto_mdp": 1127100, "confianza": "indicativo", "fuente": "Tabla transferencias federales (mmp)", "color_hint": "neutro" },
+      { "id": "trans_otros", "nombre": "Otros conceptos", "monto_mdp": 227700, "confianza": "indicativo", "fuente": "Tabla transferencias federales (mmp)", "color_hint": "neutro" }
+    ]
+  }
+}
