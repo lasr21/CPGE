@@ -6,7 +6,7 @@
     "moneda": "MXN",
     "unidad": "millones_pesos_corrientes",
     "fuente_documento": "Criterios Generales de Política Económica 2026 (SHCP)",
-    "url_fuente": "",
+    "url_fuente": "https://www.finanzaspublicas.hacienda.gob.mx/es/Finanzas_Publicas/Paquete_Economico_y_Presupuesto",
     "fecha_publicacion": "2025-09-08",
     "extraido_el": "2026-09-08",
     "advertencias": [

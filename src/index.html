@@ -21,7 +21,7 @@
     <main>
       <section class="hero wrap">
         <div class="hero-copy">
-          <p class="kicker">Paquete Económico <span id="year-label">2026</span></p>
+          <p class="kicker">Paquete Económico <span id="year-label">2027</span></p>
           <h1>El dinero público<br /><em>entra y sale</em> aquí.</h1>
           <p class="intro">Cada peso del gasto federal tiene una historia: una parte se recauda y otra se pide prestada. El presupuesto no es una cifra; es un recorrido.</p>
           <div class="hero-actions">
@@ -44,16 +44,16 @@
         <div class="section-heading">
           <div><p class="kicker">La pregunta central</p><h2>¿De dónde sale<br />el dinero?</h2></div>
           <div class="unit-control" role="group" aria-label="Unidad de visualización">
-            <button class="unit active" data-unit="pct">% PIB</button>
-            <button class="unit" data-unit="nominal">MDP</button>
+            <button class="unit active" data-unit="nominal">Pesos</button>
+            <button class="unit" data-unit="pct">% PIB</button>
             <button class="unit" data-unit="percapita" disabled title="Población CONAPO no disponible">$/persona</button>
           </div>
         </div>
-        <div class="flow-intro"><span>Fuentes de recursos</span><span>Destino final</span></div>
+        <div class="flow-intro"><span>De dónde viene</span><span>En qué se gasta</span></div>
         <div id="sankey" class="chart" aria-label="Diagrama del flujo presupuestario"></div>
         <div id="mobile-flow" class="mobile-flow" aria-label="Flujo presupuestario en barras"></div>
         <div class="legend"><span><i class="swatch income"></i>Ingresos</span><span><i class="swatch debt"></i>Deuda del año</span><span><i class="swatch spend"></i>Gasto</span><span><i class="swatch rigid"></i>Gasto rígido</span></div>
-        <p class="method-note">El Sankey usa ingresos presupuestarios y gasto neto total pagado. La deuda es el balance presupuestario negativo, no la deuda acumulada.</p>
+        <p class="method-note">Lee de izquierda a derecha: los ingresos y la deuda del año financian el gasto. Las ramas del lado derecho muestran los grandes destinos del presupuesto; pasa el cursor para ver el detalle y la fuente.</p>
       </section>
 
       <section class="pulse wrap">
@@ -74,6 +74,7 @@
 
       <section class="audit wrap">
         <div class="section-heading"><div><p class="kicker">Para revisar</p><h2>Los números<br /><em>sin maquillaje.</em></h2></div><p class="section-deck">Cada renglón conserva su fuente y nivel de confianza. Los detalles están aquí aunque el gráfico los agrupe.</p></div>
+        <div class="data-source" id="data-source"></div>
         <div class="table-wrap"><table><thead><tr><th>Rubro</th><th>Tipo</th><th class="number">MDP</th><th class="number">% PIB</th><th>Fuente</th></tr></thead><tbody id="audit-table"></tbody></table></div>
       </section>
     </main>

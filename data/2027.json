@@ -6,10 +6,11 @@
     "moneda": "MXN",
     "unidad": "millones_pesos_corrientes",
     "fuente_documento": "Criterios Generales de Política Económica 2026 (SHCP)",
-    "url_fuente": "",
+    "url_fuente": "https://www.finanzaspublicas.hacienda.gob.mx/es/Finanzas_Publicas/Paquete_Economico_y_Presupuesto",
     "fecha_publicacion": "2025-09-08",
     "extraido_el": "2026-09-08",
     "advertencias": [
+      "Archivo de prueba: replica las cifras de 2026 para probar la interfaz. No representa todavía el PPEF 2027 real ni ha sido validado contra un documento 2027.",
       "Cifras del PROYECTO (PPEF) enviado por el Ejecutivo, no del presupuesto aprobado por la Cámara de Diputados.",
       "El desglose de ingresos tributarios proviene de una tabla en miles de millones de pesos; su suma difiere del total publicado en 229 mdp por redondeo."
     ]
